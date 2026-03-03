@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Central PD</title>
+  <title>STATUS ONLINE</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <style>
         * {
@@ -194,6 +194,19 @@
   <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
  </head>
  <body>
+  <div class="container">
+   <div class="header">
+    <div style="position: relative; margin-bottom: 30px;">
+     <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
+      <img src="https://i.imgur.com/placeholder.png" alt="Central PD" style="height: 60px; width: auto;" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.display='none';">
+      <h1 class="server-title">Central PD</h1>
+     </div>
+     <p class="server-subtitle">Servidor FiveM - Roleplay</p><!-- Login en esquina superior derecha -->
+     <div id="loginCorner" style="position: absolute; top: 0; right: 0; display: flex; gap: 8px; align-items: center;">
+      <button id="loginBtnCorner" onclick="toggleLoginForm()" class="btn btn-copy" style="margin: 0; padding: 8px 12px; font-size: 11px; text-transform: uppercase;"> 🔒 Admin </button>
+     </div>
+    </div>
+   </div>
    <div class="stats-container">
     <div class="stat-card">
      <div class="stat-number" id="playerCount">

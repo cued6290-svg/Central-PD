@@ -197,13 +197,11 @@
   <div class="container">
    <div class="header">
     <div style="position: relative; margin-bottom: 30px;">
-     <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;">
-      <img src="https://i.imgur.com/placeholder.png" alt="Central PD" style="height: 60px; width: auto;" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.display='none';">
+     <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;"><img src="https://i.imgur.com/placeholder.png" alt="Central PD" style="height: 60px; width: auto;" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.display='none';">
       <h1 class="server-title">Central PD</h1>
      </div>
      <p class="server-subtitle">Servidor FiveM - Roleplay</p><!-- Login en esquina superior derecha -->
-     <div id="loginCorner" style="position: absolute; top: 0; right: 0; display: flex; gap: 8px; align-items: center;">
-      <button id="loginBtnCorner" onclick="toggleLoginForm()" class="btn btn-copy" style="margin: 0; padding: 8px 12px; font-size: 11px; text-transform: uppercase;"> 🔒 Admin </button>
+     <div id="loginCorner" style="position: absolute; top: 0; right: 0; display: flex; gap: 8px; align-items: center;"><button id="loginBtnCorner" onclick="toggleLoginForm()" class="btn btn-copy" style="margin: 0; padding: 8px 12px; font-size: 11px; text-transform: uppercase;"> 🔒 Admin </button>
      </div>
     </div><!-- STATUS GRANDE Y NARANJA -->
     <div style="margin-bottom: 40px; text-align: center;">
@@ -217,32 +215,28 @@
    </div>
    <div class="stats-container">
     <div class="stat-card">
-     <div class="stat-number" id="playerCount">
-      <span class="spinner"></span>
+     <div class="stat-number" id="playerCount"><span class="spinner"></span>
      </div>
      <div class="stat-label">
       Jugadores Online
      </div>
     </div>
     <div class="stat-card">
-     <div class="stat-number" id="maxPlayers">
-      <span class="spinner"></span>
+     <div class="stat-number" id="maxPlayers"><span class="spinner"></span>
      </div>
      <div class="stat-label">
       Capacidad Máxima
      </div>
     </div>
     <div class="stat-card">
-     <div class="stat-number" id="uptime">
-      <span class="spinner"></span>
+     <div class="stat-number" id="uptime"><span class="spinner"></span>
      </div>
      <div class="stat-label">
       Estado
      </div>
     </div>
    </div>
-   <div class="buttons-container">
-    <a href="https://discord.gg/tu-codigo" target="_blank" rel="noopener noreferrer" class="btn btn-discord"> 📱 Unirse a Discord </a> <button class="btn btn-connect" onclick="connectToServer()"> 🚀 Conectar al Servidor </button> <button class="btn btn-copy" onclick="copyIP()"> 📋 Copiar IP </button>
+   <div class="buttons-container"><a href="https://discord.gg/tu-codigo" target="_blank" rel="noopener noreferrer" class="btn btn-discord"> 📱 Unirse a Discord </a> <button class="btn btn-connect" onclick="connectToServer()"> 🚀 Conectar al Servidor </button> <button class="btn btn-copy" onclick="copyIP()"> 📋 Copiar IP </button>
    </div>
    <div class="info-box">
     <div class="info-label">
@@ -256,25 +250,19 @@
     <div style="font-size: 18px; font-weight: bold; margin-bottom: 20px; color: #e2e8f0;">
      Acceso Administrador
     </div>
-    <div style="margin-bottom: 15px;">
-     <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase;">Contraseña</label>
-     <div style="position: relative; display: flex; align-items: center;">
-      <input type="password" id="loginPassword" placeholder="Ingresa la contraseña..." style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 6px; padding: 10px 15px; color: #e2e8f0; font-size: 14px; padding-right: 40px;"> <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 18px; padding: 0; display: flex; align-items: center; justify-content: center;"> <span id="eyeIcon">👁️</span> </button>
+    <div style="margin-bottom: 15px;"><label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase;">Contraseña</label>
+     <div style="position: relative; display: flex; align-items: center;"><input type="password" id="loginPassword" placeholder="Ingresa la contraseña..." style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 6px; padding: 10px 15px; color: #e2e8f0; font-size: 14px; padding-right: 40px;"> <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 18px; padding: 0; display: flex; align-items: center; justify-content: center;"> <span id="eyeIcon">👁️</span> </button>
      </div>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-     <button onclick="loginAdmin()" class="btn btn-connect" style="margin: 0; padding: 10px 15px; font-size: 14px;"> 🔓 Iniciar Sesión </button> <button onclick="toggleLoginForm()" class="btn" style="margin: 0; padding: 10px 15px; font-size: 14px; background: #64748b; color: white;"> ✕ Cancelar </button>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;"><button onclick="loginAdmin()" class="btn btn-connect" style="margin: 0; padding: 10px 15px; font-size: 14px;"> 🔓 Iniciar Sesión </button> <button onclick="toggleLoginForm()" class="btn" style="margin: 0; padding: 10px 15px; font-size: 14px; background: #64748b; color: white;"> ✕ Cancelar </button>
     </div>
    </div><!-- Fondo oscuro para modal -->
    <div id="loginBackdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;" onclick="toggleLoginForm()"></div><!-- Admin Panel -->
    <div id="adminPanel" style="display: none; position: fixed; bottom: 20px; right: 20px; background: rgba(30, 41, 59, 0.95); border: 2px solid rgba(139, 92, 246, 0.5); border-radius: 12px; padding: 15px; z-index: 1000; backdrop-filter: blur(10px); min-width: 250px;">
-    <div style="margin-bottom: 12px;">
-     <button onclick="toggleStatusEditor()" class="btn btn-copy" style="width: 100%; padding: 10px 15px; font-size: 13px; margin: 0;"> 🔧 Cambiar Estado </button>
+    <div style="margin-bottom: 12px;"><button onclick="toggleStatusEditor()" class="btn btn-copy" style="width: 100%; padding: 10px 15px; font-size: 13px; margin: 0;"> 🔧 Cambiar Estado </button>
     </div>
-    <div id="statusEditor" style="display: none; margin-bottom: 12px; padding: 12px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 6px;">
-     <label style="display: block; font-size: 11px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase;">Nuevo Estado</label> <input type="text" id="customStatus" placeholder="Ej: En Mantenimiento..." style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 6px; padding: 8px 10px; color: #e2e8f0; font-size: 12px; margin-bottom: 8px;">
-     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-      <button onclick="saveCustomStatus()" class="btn btn-connect" style="margin: 0; padding: 8px 12px; font-size: 12px;"> ✓ Guardar </button> <button onclick="toggleStatusEditor()" class="btn" style="margin: 0; padding: 8px 12px; font-size: 12px; background: #64748b; color: white;"> ✕ Cancelar </button>
+    <div id="statusEditor" style="display: none; margin-bottom: 12px; padding: 12px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 6px;"><label style="display: block; font-size: 11px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase;">Nuevo Estado</label> <input type="text" id="customStatus" placeholder="Ej: En Mantenimiento..." style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 6px; padding: 8px 10px; color: #e2e8f0; font-size: 12px; margin-bottom: 8px;">
+     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"><button onclick="saveCustomStatus()" class="btn btn-connect" style="margin: 0; padding: 8px 12px; font-size: 12px;"> ✓ Guardar </button> <button onclick="toggleStatusEditor()" class="btn" style="margin: 0; padding: 8px 12px; font-size: 12px; background: #64748b; color: white;"> ✕ Cancelar </button>
      </div>
     </div><button onclick="logoutAdmin()" class="btn" style="width: 100%; padding: 10px 15px; font-size: 13px; background: #ef4444; color: white; margin: 0;"> 🚪 Cerrar Sesión </button>
    </div>
@@ -373,27 +361,14 @@
             }
         }
 
-        // Obtener estado actual desde Neon DB
-        async function getServerStatus() {
-            try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
-                
-                if (data.status) {
-                    document.getElementById('statusDisplayLarge').textContent = data.status;
-                    localStorage.setItem('customServerStatus', data.status);
-                }
-            } catch (error) {
-                console.error('Error fetching status:', error);
-                const saved = localStorage.getItem('customServerStatus');
-                if (saved) {
-                    document.getElementById('statusDisplayLarge').textContent = saved;
-                }
-            }
+        // Obtener estado actual desde localStorage
+        function getServerStatus() {
+            const saved = localStorage.getItem('customServerStatus') || 'ONLINE';
+            document.getElementById('statusDisplayLarge').textContent = saved;
         }
 
-        // Guardar estado personalizado en Neon DB
-        async function saveCustomStatus() {
+        // Guardar estado personalizado en localStorage
+        function saveCustomStatus() {
             const status = document.getElementById('customStatus').value.trim();
 
             if (!status) {
@@ -401,33 +376,11 @@
                 return;
             }
 
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ status: status })
-                });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    document.getElementById('statusDisplayLarge').textContent = status;
-                    localStorage.setItem('customServerStatus', status);
-                    showSuccess('✓ Estado actualizado correctamente');
-                    document.getElementById('statusEditor').style.display = 'none';
-                    document.getElementById('customStatus').value = '';
-                    
-                    // Notificar a otros usuarios en tiempo real
-                    getServerStatus();
-                } else {
-                    showError(data.message || 'Error al guardar el estado');
-                }
-            } catch (error) {
-                console.error('Error saving status:', error);
-                showError('Error al guardar el estado');
-            }
+            localStorage.setItem('customServerStatus', status);
+            document.getElementById('statusDisplayLarge').textContent = status;
+            showSuccess('✓ Estado actualizado correctamente');
+            document.getElementById('statusEditor').style.display = 'none';
+            document.getElementById('customStatus').value = '';
         }
 
         async function getServerInfo() {
@@ -508,5 +461,5 @@
         // Cargar al iniciar
         init();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d6a0af5f3fab8c5',t:'MTc3MjU1NTYwNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d6a0dc8853fb8c5',t:'MTc3MjU1NTcyMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

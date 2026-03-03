@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>STATUS ONLINE</title>
+  <title>STATUS</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <style>
         * {
@@ -204,7 +204,6 @@
      <p class="server-subtitle">Servidor FiveM - Roleplay</p><!-- Login en esquina superior derecha -->
      <div id="loginCorner" style="position: absolute; top: 0; right: 0; display: flex; gap: 8px; align-items: center;">
       <button id="loginBtnCorner" onclick="toggleLoginForm()" class="btn btn-copy" style="margin: 0; padding: 8px 12px; font-size: 11px; text-transform: uppercase;"> 🔒 Admin </button>
-     </div>
      </div>
     </div>
    </div>
@@ -427,7 +426,7 @@
         function showOffline() {
             document.getElementById('playerCount').textContent = '?';
             document.getElementById('maxPlayers').textContent = '?';
-            document.getElementById('uptime').textContent = ' 🟠 MANTENIMIENTO';
+            document.getElementById('uptime').textContent = '🔴 Offline';
             showError('Servidor no disponible en este momento');
         }
 

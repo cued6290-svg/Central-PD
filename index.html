@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Central PD - FiveM Server</title>
+  <title>Central PD</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <style>
         * {
@@ -200,7 +200,7 @@
      <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;"><img src="https://i.imgur.com/placeholder.png" alt="Central PD" style="height: 60px; width: auto;" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.display='none';">
       <h1 class="server-title">Central PD</h1>
      </div>
-     <p class="server-subtitle">Servidor FiveM - Roleplay</p>
+     <p class="server-subtitle">Central PD Web</p>
      <div id="loginCorner" style="position: absolute; top: 0; right: 0; display: flex; gap: 8px; align-items: center;"><button id="loginBtnCorner" onclick="toggleLoginForm()" class="btn btn-copy" style="margin: 0; padding: 8px 12px; font-size: 11px; text-transform: uppercase;"> 🔒 Admin </button>
      </div>
     </div>
@@ -478,7 +478,7 @@
                 const data = await response.json();
                 if (data && data.Data) {
                     const players = data.Data.PlayersOnline || 0;
-                    const maxPlayers = data.Data.MaxClients || 128;
+                    const maxPlayers = data.Data.MaxClients || 64;
                     document.getElementById('playerCount').textContent = players;
                     document.getElementById('maxPlayers').textContent = maxPlayers;
                     document.getElementById('uptime').textContent = '🟢 Online';

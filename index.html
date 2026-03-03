@@ -226,53 +226,56 @@
    </div>
    <div class="info-box">
     <div class="info-label">
-     IP del Servidor
+     CFX Code
     </div>
     <div class="info-value">
-     173.249.31.192:30120
+     965aek
     </div>
    </div>
    <div id="status" style="text-align: center; margin-top: 20px;"></div>
   </div>
   <script>
+        const CFX_CODE = '965aek';
         const SERVER_IP = '173.249.31.192:30120';
-        const DISCORD_LINK = 'https://discord.gg/tu-codigo'; // ← CAMBIA ESTO POR TU ENLACE
+        const DISCORD_LINK = 'https://discord.gg/tu-codigo';
 
-        // Obtener información del servidor
         async function getServerInfo() {
             try {
-                const response = await fetch(`https://api.fivem.net/api/servers/single/${SERVER_IP}`);
+                const response = await fetch(`https://servers-frontend.fivem.net/api/servers/single/${CFX_CODE}`);
+                
+                if (!response.ok) throw new Error('API Error');
+                
                 const data = await response.json();
 
-                if (data && data.players !== undefined) {
-                    document.getElementById('playerCount').textContent = data.players.length;
-                    document.getElementById('maxPlayers').textContent = data.maxPlayers || 128;
+                if (data && data.data) {
+                    const serverData = data.data;
+                    document.getElementById('playerCount').textContent = serverData.players || 0;
+                    document.getElementById('maxPlayers').textContent = serverData.sv_maxclients || 128;
                     document.getElementById('uptime').textContent = '🟢 Online';
                     document.getElementById('status').innerHTML = '';
                 } else {
-                    document.getElementById('playerCount').textContent = '?';
-                    document.getElementById('maxPlayers').textContent = '?';
-                    document.getElementById('uptime').textContent = '🔴 Offline';
-                    showError('Verifica que el servidor esté online');
+                    showOffline();
                 }
             } catch (error) {
-                console.error('Error fetching server:', error);
-                document.getElementById('playerCount').textContent = '?';
-                document.getElementById('maxPlayers').textContent = '?';
-                document.getElementById('uptime').textContent = '🔴 Offline';
-                showError('No se puede conectar con el servidor');
+                console.error('Error:', error);
+                showOffline();
             }
         }
 
-        // Conectar al servidor
-        function connectToServer() {
-            window.location.href = `fivem://connect/${SERVER_IP}`;
+        function showOffline() {
+            document.getElementById('playerCount').textContent = '?';
+            document.getElementById('maxPlayers').textContent = '?';
+            document.getElementById('uptime').textContent = '🔴 Offline';
+            showError('Servidor no disponible en este momento');
         }
 
-        // Copiar IP
+        function connectToServer() {
+            window.location.href = `fivem://connect/${CFX_CODE}`;
+        }
+
         function copyIP() {
-            navigator.clipboard.writeText(SERVER_IP).then(() => {
-                showSuccess('¡IP copiada!');
+            navigator.clipboard.writeText(CFX_CODE).then(() => {
+                showSuccess('¡CFX Code copiado!');
             }).catch(() => {
                 showError('Error al copiar');
             });
@@ -290,9 +293,8 @@
             setTimeout(() => status.innerHTML = '', 3000);
         }
 
-        // Actualizar cada 30 segundos
         getServerInfo();
         setInterval(getServerInfo, 30000);
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d69c5fff792cfe6',t:'MTc3MjU1Mjc4MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d69c9180480036a',t:'MTc3MjU1MjkwNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>

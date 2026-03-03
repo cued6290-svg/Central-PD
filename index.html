@@ -3,7 +3,7 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Central PD</title>
+  <title>Central PD - FiveM Server</title>
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <style>
         * {
@@ -191,15 +191,27 @@
     </style>
   <style>body { box-sizing: border-box; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script><!-- Firebase SDK -->
  </head>
  <body>
   <div class="container">
    <div class="header">
-    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;"><img src="https://imgur.com/a/0qr2tYD" alt="Central PD" style="height: 60px; width: auto;" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.display='none';">
-     <h1 class="server-title">Central PD</h1>
+    <div style="position: relative; margin-bottom: 30px;">
+     <div style="display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px;"><img src="https://i.imgur.com/placeholder.png" alt="Central PD" style="height: 60px; width: auto;" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.display='none';">
+      <h1 class="server-title">Central PD</h1>
+     </div>
+     <p class="server-subtitle">Servidor FiveM - Roleplay</p><!-- Login en esquina superior derecha -->
+     <div id="loginCorner" style="position: absolute; top: 0; right: 0; display: flex; gap: 8px; align-items: center;"><button id="loginBtnCorner" onclick="toggleLoginForm()" class="btn btn-copy" style="margin: 0; padding: 8px 12px; font-size: 11px; text-transform: uppercase;"> 🔒 Admin </button>
+     </div>
+    </div><!-- STATUS GRANDE Y NARANJA -->
+    <div style="margin-bottom: 40px; text-align: center;">
+     <div style="font-size: 14px; color: #94a3b8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;">
+      Estado Actual:
+     </div>
+     <div id="statusDisplayLarge" style="font-size: 48px; font-weight: bold; color: #ffffff; background: linear-gradient(135deg, #f97316, #ea580c); padding: 25px 40px; border-radius: 12px; text-transform: uppercase; letter-spacing: 2px; box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);">
+      ONLINE
+     </div>
     </div>
-    <p class="server-subtitle">STATUS SERVIDOR</p>
    </div>
    <div class="stats-container">
     <div class="stat-card">
@@ -233,6 +245,26 @@
     <div class="info-value">
      965aek
     </div>
+   </div><!-- Login Modal -->
+   <div id="loginSection" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(15, 23, 42, 0.95); border: 2px solid rgba(139, 92, 246, 0.5); border-radius: 12px; padding: 30px; z-index: 1000; backdrop-filter: blur(10px); min-width: 300px;">
+    <div style="font-size: 18px; font-weight: bold; margin-bottom: 20px; color: #e2e8f0;">
+     Acceso Administrador
+    </div>
+    <div style="margin-bottom: 15px;"><label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase;">Contraseña</label>
+     <div style="position: relative; display: flex; align-items: center;"><input type="password" id="loginPassword" placeholder="Ingresa la contraseña..." style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 6px; padding: 10px 15px; color: #e2e8f0; font-size: 14px; padding-right: 40px;"> <button type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 10px; background: none; border: none; color: #94a3b8; cursor: pointer; font-size: 18px; padding: 0; display: flex; align-items: center; justify-content: center;"> <span id="eyeIcon">👁️</span> </button>
+     </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;"><button onclick="loginAdmin()" class="btn btn-connect" style="margin: 0; padding: 10px 15px; font-size: 14px;"> 🔓 Iniciar Sesión </button> <button onclick="toggleLoginForm()" class="btn" style="margin: 0; padding: 10px 15px; font-size: 14px; background: #64748b; color: white;"> ✕ Cancelar </button>
+    </div>
+   </div><!-- Fondo oscuro para modal -->
+   <div id="loginBackdrop" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 999;" onclick="toggleLoginForm()"></div><!-- Admin Panel -->
+   <div id="adminPanel" style="display: none; position: fixed; bottom: 20px; right: 20px; background: rgba(30, 41, 59, 0.95); border: 2px solid rgba(139, 92, 246, 0.5); border-radius: 12px; padding: 15px; z-index: 1000; backdrop-filter: blur(10px); min-width: 250px;">
+    <div style="margin-bottom: 12px;"><button onclick="toggleStatusEditor()" class="btn btn-copy" style="width: 100%; padding: 10px 15px; font-size: 13px; margin: 0;"> 🔧 Cambiar Estado </button>
+    </div>
+    <div id="statusEditor" style="display: none; margin-bottom: 12px; padding: 12px; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 6px;"><label style="display: block; font-size: 11px; color: #94a3b8; margin-bottom: 5px; text-transform: uppercase;">Nuevo Estado</label> <input type="text" id="customStatus" placeholder="Ej: En Mantenimiento..." style="width: 100%; background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(148, 163, 184, 0.3); border-radius: 6px; padding: 8px 10px; color: #e2e8f0; font-size: 12px; margin-bottom: 8px;">
+     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;"><button onclick="saveCustomStatus()" class="btn btn-connect" style="margin: 0; padding: 8px 12px; font-size: 12px;"> ✓ Guardar </button> <button onclick="toggleStatusEditor()" class="btn" style="margin: 0; padding: 8px 12px; font-size: 12px; background: #64748b; color: white;"> ✕ Cancelar </button>
+     </div>
+    </div><button onclick="logoutAdmin()" class="btn" style="width: 100%; padding: 10px 15px; font-size: 13px; background: #ef4444; color: white; margin: 0;"> 🚪 Cerrar Sesión </button>
    </div>
    <div id="status" style="text-align: center; margin-top: 20px;"></div>
   </div>
@@ -240,10 +272,157 @@
         const CFX_CODE = '965aek';
         const SERVER_IP = '173.249.31.192:30120';
         const DISCORD_LINK = 'https://discord.gg/tu-codigo';
+        
+        // CONTRASEÑAS AUTORIZADAS
+        const AUTHORIZED_PASSWORDS = ['admin123', 'password456'];
+
+        // API URL (cambiar esto por tu URL de Netlify Functions o servidor)
+        const API_URL = 'https://central-pd.netlify.app/.netlify/functions/server-status';
+
+        // Estado de sesión
+        let isAdminLogged = false;
+        let statusPollingInterval;
+
+        // Mostrar/Ocultar contraseña
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('loginPassword');
+            const eyeIcon = document.getElementById('eyeIcon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.textContent = '👁️‍🗨️';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.textContent = '👁️';
+            }
+        }
+
+        // Mostrar/Ocultar formulario de login
+        function toggleLoginForm() {
+            const loginSection = document.getElementById('loginSection');
+            const backdrop = document.getElementById('loginBackdrop');
+            const isHidden = loginSection.style.display === 'none';
+            
+            loginSection.style.display = isHidden ? 'block' : 'none';
+            backdrop.style.display = isHidden ? 'block' : 'none';
+            
+            if (isHidden) {
+                document.getElementById('loginPassword').focus();
+                document.getElementById('loginPassword').value = '';
+            }
+        }
+
+        // Iniciar sesión como administrador
+        function loginAdmin() {
+            const password = document.getElementById('loginPassword').value;
+
+            if (!AUTHORIZED_PASSWORDS.includes(password)) {
+                showError('❌ Contraseña incorrecta');
+                document.getElementById('loginPassword').value = '';
+                return;
+            }
+
+            isAdminLogged = true;
+            localStorage.setItem('adminSession', 'true');
+            showSuccess('✓ Sesión iniciada correctamente');
+            updateAdminUI();
+            
+            document.getElementById('loginSection').style.display = 'none';
+            document.getElementById('loginBackdrop').style.display = 'none';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        // Cerrar sesión
+        function logoutAdmin() {
+            isAdminLogged = false;
+            localStorage.removeItem('adminSession');
+            showSuccess('✓ Sesión cerrada');
+            updateAdminUI();
+        }
+
+        // Actualizar interfaz según estado de login
+        function updateAdminUI() {
+            const loginBtn = document.getElementById('loginBtnCorner');
+            const adminPanel = document.getElementById('adminPanel');
+
+            if (isAdminLogged) {
+                loginBtn.style.display = 'none';
+                adminPanel.style.display = 'block';
+            } else {
+                loginBtn.style.display = 'block';
+                adminPanel.style.display = 'none';
+            }
+        }
+
+        // Mostrar/Ocultar editor de estado
+        function toggleStatusEditor() {
+            const editor = document.getElementById('statusEditor');
+            editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
+            if (editor.style.display === 'block') {
+                document.getElementById('customStatus').focus();
+                document.getElementById('customStatus').value = '';
+            }
+        }
+
+        // Obtener estado actual desde Neon DB
+        async function getServerStatus() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                
+                if (data.status) {
+                    document.getElementById('statusDisplayLarge').textContent = data.status;
+                    localStorage.setItem('customServerStatus', data.status);
+                }
+            } catch (error) {
+                console.error('Error fetching status:', error);
+                const saved = localStorage.getItem('customServerStatus');
+                if (saved) {
+                    document.getElementById('statusDisplayLarge').textContent = saved;
+                }
+            }
+        }
+
+        // Guardar estado personalizado en Neon DB
+        async function saveCustomStatus() {
+            const status = document.getElementById('customStatus').value.trim();
+
+            if (!status) {
+                showError('El estado no puede estar vacío');
+                return;
+            }
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ status: status })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('statusDisplayLarge').textContent = status;
+                    localStorage.setItem('customServerStatus', status);
+                    showSuccess('✓ Estado actualizado correctamente');
+                    document.getElementById('statusEditor').style.display = 'none';
+                    document.getElementById('customStatus').value = '';
+                    
+                    // Notificar a otros usuarios en tiempo real
+                    getServerStatus();
+                } else {
+                    showError(data.message || 'Error al guardar el estado');
+                }
+            } catch (error) {
+                console.error('Error saving status:', error);
+                showError('Error al guardar el estado');
+            }
+        }
 
         async function getServerInfo() {
             try {
-                // Usa la API de CFX directamente (sin CORS)
                 const response = await fetch(`https://servers-frontend.fivem.net/api/servers/single/${CFX_CODE}`);
                 
                 if (!response.ok) throw new Error('API Error');
@@ -252,7 +431,7 @@
 
                 if (data && data.Data) {
                     const players = data.Data.PlayersOnline || 0;
-                    const maxPlayers = data.Data.MaxClients || 64;
+                    const maxPlayers = data.Data.MaxClients || 128;
                     
                     document.getElementById('playerCount').textContent = players;
                     document.getElementById('maxPlayers').textContent = maxPlayers;
@@ -280,7 +459,7 @@
 
         function copyIP() {
             navigator.clipboard.writeText(CFX_CODE).then(() => {
-                showSuccess('¡CFX Code copiado!');
+                showSuccess('✓ CFX Code copiado!');
             }).catch(() => {
                 showError('Error al copiar');
             });
@@ -288,18 +467,37 @@
 
         function showSuccess(msg) {
             const status = document.getElementById('status');
-            status.innerHTML = `<span class="success">✓ ${msg}</span>`;
+            status.innerHTML = `<span class="success">${msg}</span>`;
             setTimeout(() => status.innerHTML = '', 3000);
         }
 
         function showError(msg) {
             const status = document.getElementById('status');
-            status.innerHTML = `<span class="error">✗ ${msg}</span>`;
+            status.innerHTML = `<span class="error">${msg}</span>`;
             setTimeout(() => status.innerHTML = '', 3000);
         }
 
-        getServerInfo();
-        setInterval(getServerInfo, 30000);
+        // Escuchar cambios del estado en tiempo real (polling cada 2 segundos)
+        function startStatusPolling() {
+            getServerStatus(); // Primera carga
+            statusPollingInterval = setInterval(getServerStatus, 2000); // Poll cada 2 segundos
+        }
+
+        // Inicializar
+        function init() {
+            // Verificar si hay sesión guardada
+            if (localStorage.getItem('adminSession') === 'true') {
+                isAdminLogged = true;
+            }
+            
+            updateAdminUI();
+            getServerInfo();
+            startStatusPolling(); // Escuchar cambios en tiempo real
+            setInterval(getServerInfo, 30000);
+        }
+
+        // Cargar al iniciar
+        init();
     </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d69d4aac623b8c5',t:'MTc3MjU1MzM4MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d69fbe8e797d929',t:'MTc3MjU1NDk4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
